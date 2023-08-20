@@ -34,4 +34,14 @@ task startDiscardServer(type: JavaExec) {
     mainClass = 'org.example.discard.DiscardServer'
 }
 
+task startTimeServer(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.example.time.TimeServer'
+}
+
+task startTimeClient(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.example.time.TimeClient'
+}
+
 
