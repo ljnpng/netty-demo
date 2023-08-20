@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.netty:netty-all:4.1.+'
+    compileOnly 'org.projectlombok:lombok:1.+'
+    annotationProcessor 'org.projectlombok:lombok:1.+'
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks {
+
+}
+
+// 忽略编译警告
+// 使用 task 会在配置阶段执行
+// 而使用 tasks.register 会在执行阶段执行
+task startDiscardServer(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.example.discard.DiscardServer'
+}
+
+
